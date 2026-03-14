@@ -28,9 +28,24 @@ conn = snowflake.connector.connect(
     schema=os.environ['SNOWFLAKE_SCHEMA']
 )
 
+def execute_sql_file(path):
+    with open(path, 'r') as f:
+        sql = f.read()
+        for statement in sql.split(";"):
+            if statement.strip():
+                cursor.execute(statement)
+
 cursor = conn.cursor()
 cursor.execute("SELECT CURRENT_USER(), CURRENT_ROLE()")
 print(cursor.fetchone())
+
+print("Deploying setup scripts...")
+execute_sql_file("snowflake/setup/snowflake_setup.sql")
+
+print("Deploying stored procedures...")
+execute_sql_file("snowflake/procedure/load_employee.sql")
+
+print("Deployment completed!")
 
 cursor.close()
 conn.close()
