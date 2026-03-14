@@ -29,11 +29,9 @@ conn = snowflake.connector.connect(
 )
 
 def execute_sql_file(path):
-    with open(path, 'r') as f:
+    with open(path, "r") as f:
         sql = f.read()
-        for statement in sql.split(";"):
-            if statement.strip():
-                cursor.execute(statement)
+        cursor.execute(sql)
 
 cursor = conn.cursor()
 cursor.execute("SELECT CURRENT_USER(), CURRENT_ROLE()")
