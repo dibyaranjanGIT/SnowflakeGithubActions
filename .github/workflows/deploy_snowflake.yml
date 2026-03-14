@@ -28,8 +28,11 @@ jobs:
 
     - name: Deploy to Snowflake
       env:
-        SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
         SNOWFLAKE_PRIVATE_KEY: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
-
+        SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+        SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+        SNOWFLAKE_WAREHOUSE: DEMO_WH
+        SNOWFLAKE_DATABASE: DEMO_DB
+        SNOWFLAKE_SCHEMA: DEMO_SCHEMA
       run: |
         python scripts/deploy_snowflake.py
