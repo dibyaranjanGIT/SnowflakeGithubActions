@@ -40,4 +40,4 @@ jobs:
         SNOWFLAKE_DATABASE: DEMO_DB
         SNOWFLAKE_SCHEMA: DEMO_SCHEMA
       run: |
-        python snowflake/scripts/deploy_snowflake.py
+        python snowflake/deploy_snowflake.py
