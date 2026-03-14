@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'snowflake/**'
+      - '.github/workflows/**'
 
 jobs:
 
@@ -27,7 +28,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r .snowflake/requirements.txt
+        cd snowflake
+        pip install -r requirements.txt
 
     - name: Deploy to Snowflake
       env:
