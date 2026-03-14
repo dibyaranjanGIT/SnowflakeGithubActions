@@ -25,7 +25,8 @@ conn = snowflake.connector.connect(
     private_key=private_key,
     warehouse=os.environ['SNOWFLAKE_WAREHOUSE'],
     database=os.environ['SNOWFLAKE_DATABASE'],
-    schema=os.environ['SNOWFLAKE_SCHEMA']
+    schema=os.environ['SNOWFLAKE_SCHEMA'],
+    role="ACCOUNTADMIN"
 )
 
 def execute_sql_file(path):
